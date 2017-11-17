@@ -7,12 +7,17 @@
 //
 
 import UIKit
-
+import SafariServices
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        if #available(iOS 9.0, *) {
+            let safari = SFSafariViewController(url: NSURL(string: "http://www.baidu.com")! as URL)
+            self.present(safari, animated: true, completion: nil)
+        } else {
+            // Fallback on earlier versions
+        }
     }
 
     override func didReceiveMemoryWarning() {
